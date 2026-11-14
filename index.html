@@ -1,0 +1,2956 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Samuel Pinheiro — Estudante de Análise e Desenvolvimento de Sistemas com foco em Python, automação de processos e soluções para negócios.">
+  <title>Samuel Pinheiro | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --bg-primary: #ead8ae;
+      --bg-secondary: #f3ead3;
+      --bg-card: rgba(253, 249, 238, 0.92);
+      --bg-card-hover: rgba(255, 253, 247, 0.98);
+      --bg-surface-inner: rgba(242, 230, 198, 0.68);
+      --border-subtle: rgba(108, 76, 36, 0.2);
+      --border-accent: rgba(15, 95, 156, 0.48);
+      --text-primary: #1a2433;
+      --text-secondary: #435060;
+      --text-muted: #665d4f;
+      --paper-ink: #1a2433;
+      --paper-ink-soft: #364152;
+      --paper-ink-muted: #5b5347;
+      --paper-accent: #0f5f9c;
+      --accent-cyan: #0f5f9c;
+      --accent-blue: #1d4ed8;
+      --accent-glow: rgba(15, 95, 156, 0.1);
+      --gh-level-0: #e5dcc5;
+      --gh-level-1: #9be9a8;
+      --gh-level-2: #40c463;
+      --gh-level-3: #30a14e;
+      --gh-level-4: #15803d;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-card: 0 14px 32px -14px rgba(72, 48, 18, 0.18), 0 2px 6px rgba(72, 48, 18, 0.06);
+      --transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      --cards-per-view: 1;
+      --carousel-gap: 1.25rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      background-image:
+        radial-gradient(ellipse 95% 85% at 50% 45%, rgba(252, 244, 218, 0.55), rgba(212, 182, 122, 0.42) 72%, rgba(168, 128, 68, 0.48) 100%);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    main,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Crumpled Aged Paper + Mirrored Computing Sketch Map + Flying Rocket */
+    .paper-bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255, 250, 232, 0.52), transparent 52%),
+        radial-gradient(circle at 80% 78%, rgba(186, 146, 82, 0.24), transparent 55%),
+        linear-gradient(155deg, #f3e6c4 0%, #ead6a8 48%, #e2c891 100%);
+    }
+
+    .paper-texture-svg,
+    .paper-sketch-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .paper-texture-svg {
+      mix-blend-mode: multiply;
+      opacity: 0.72;
+    }
+
+    .paper-sketch-svg {
+      opacity: 0.9;
+    }
+
+    .paper-vignette {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 110px rgba(102, 68, 24, 0.34), inset 0 0 28px rgba(84, 54, 18, 0.2);
+    }
+
+    .sketch-rocket-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 68px;
+      height: 92px;
+      margin-left: -34px;
+      margin-top: -46px;
+      will-change: transform;
+      filter: drop-shadow(2px 4px 3px rgba(68, 46, 18, 0.22));
+      opacity: 0.72;
+    }
+
+    .rocket-flame {
+      transform-origin: 34px 66px;
+      animation: rocketFlameFlicker 0.24s ease-in-out infinite alternate;
+    }
+
+    @keyframes rocketFlameFlicker {
+      0% { transform: scaleY(0.86) scaleX(0.95); opacity: 0.82; }
+      100% { transform: scaleY(1.16) scaleX(1.06); opacity: 1; }
+    }
+
+    .rocket-puff {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      margin-left: -3.5px;
+      margin-top: -3.5px;
+      border-radius: 50%;
+      border: 1.4px dashed rgba(68, 46, 20, 0.45);
+      background: rgba(255, 248, 224, 0.35);
+      pointer-events: none;
+      transition: opacity 1.15s ease-out, transform 1.15s ease-out;
+      opacity: 0;
+    }
+
+    h1, h2, h3, .brand, .metric-value {
+      font-family: var(--font-display);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+
+    /* Top Bar */
+    .topbar {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(250, 243, 224, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      box-shadow: 0 6px 20px -10px rgba(72, 48, 18, 0.2);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(15, 95, 156, 0.45);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .nav-links {
+        gap: 1.3rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    .nav-links a {
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent-cyan);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-block: 2.5rem 2.25rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2rem;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 5.5vw, 3.35rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.55rem;
+      background: linear-gradient(135deg, #162133 35%, #0f5f9c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.04rem, 2.4vw, 1.24rem);
+      font-weight: 600;
+      color: var(--paper-accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      max-width: 620px;
+      font-size: 1.02rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .hero-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      align-self: center;
+    }
+
+    .avatar-ring {
+      position: relative;
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #0f5f9c, #0284c7, rgba(108, 76, 36, 0.35));
+      box-shadow: 0 12px 28px -8px rgba(72, 48, 18, 0.28);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background-color: var(--bg-secondary);
+      border: 3px solid #fdf9ee;
+    }
+
+    .profile-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.81rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      background: var(--bg-surface-inner);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.78rem;
+      border-radius: 999px;
+      transition: border-color var(--transition), color var(--transition), background-color var(--transition);
+    }
+
+    .profile-link:hover,
+    .profile-link:focus-visible {
+      color: var(--accent-cyan);
+      border-color: var(--border-accent);
+      background: #ffffff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      padding: 0.82rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), border-color var(--transition), color var(--transition);
+      cursor: pointer;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), #0284c7);
+      color: #ffffff;
+      box-shadow: 0 8px 20px -6px rgba(15, 95, 156, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -6px rgba(15, 95, 156, 0.55);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 252, 245, 0.94);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 12px -4px rgba(72, 48, 18, 0.14);
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: var(--accent-cyan);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    /* About Section */
+    .about-section {
+      padding-block: 1.25rem 2.5rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .code-window {
+      background: #18202c;
+      border: 1px solid rgba(26, 36, 51, 0.28);
+      border-radius: var(--radius-md);
+      box-shadow: 0 18px 36px -14px rgba(32, 24, 12, 0.32);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: #e2e8f0;
+    }
+
+    .code-window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: #121822;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .window-dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .window-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .window-dot-red { background: #ef4444; }
+    .window-dot-yellow { background: #f59e0b; }
+    .window-dot-green { background: #22c55e; }
+
+    .code-filename {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .code-body {
+      padding: 1.15rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.72;
+      overflow-x: auto;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 1rem;
+      white-space: pre;
+    }
+
+    .line-num {
+      width: 1.4rem;
+      text-align: right;
+      color: #475569;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .tok-kw { color: #f472b6; }
+    .tok-var { color: #38bdf8; }
+    .tok-key { color: #cbd5e1; }
+    .tok-str { color: #7dd3fc; }
+    .tok-bool { color: #34d399; }
+    .tok-comment { color: #64748b; }
+
+    .status-dot-inline {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.75);
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    .about-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .about-heading {
+      font-size: clamp(1.65rem, 3.6vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .about-text {
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+      font-weight: 400;
+      line-height: 1.72;
+    }
+
+    .about-text + .about-text {
+      margin-top: 0.95rem;
+    }
+
+    .about-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1.25rem;
+    }
+
+    .about-certs .tag {
+      background: var(--bg-surface-inner);
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
+    }
+
+    .about-certs .tag-highlight {
+      background: var(--accent-glow);
+      color: var(--accent-cyan);
+      border-color: rgba(15, 95, 156, 0.34);
+    }
+
+    .about-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.45rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .metric-value {
+      display: block;
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--accent-cyan);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    /* Section Header */
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .section-header > div:first-child,
+    .projects-header-row > div:first-child {
+      background: rgba(253, 249, 238, 0.88);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--accent-cyan);
+      padding: 0.65rem 1.15rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px -12px rgba(72, 48, 18, 0.22);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    /* GitHub Contributions Section */
+    .activity-section {
+      padding-block: 1.5rem 2.75rem;
+    }
+
+    .contrib-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+
+    .contrib-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .contrib-count {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .contrib-count span {
+      color: var(--gh-level-4);
+    }
+
+    .contrib-years {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .year-pill {
+      padding: 0.24rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-inner);
+      color: var(--text-secondary);
+    }
+
+    .year-pill.active {
+      background: var(--accent-glow);
+      border-color: var(--border-accent);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .contrib-scroll {
+      overflow-x: auto;
+      padding-bottom: 0.35rem;
+    }
+
+    .contrib-wrapper {
+      min-width: 720px;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 8px;
+      row-gap: 6px;
+    }
+
+    .contrib-months {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: repeat(53, minmax(10px, 1fr));
+      gap: 3px;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1;
+    }
+
+    .contrib-month-label {
+      white-space: nowrap;
+    }
+
+    .contrib-weekdays {
+      grid-column: 1;
+      grid-row: 2;
+      display: grid;
+      grid-template-rows: repeat(7, 1fr);
+      gap: 3px;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      align-items: center;
+    }
+
+    .contrib-grid {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(53, minmax(10px, 1fr));
+      grid-template-rows: repeat(7, 1fr);
+      grid-auto-flow: column;
+      gap: 3px;
+    }
+
+    .contrib-cell {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 2px;
+      background-color: var(--gh-level-0);
+      outline: 1px solid rgba(92, 66, 33, 0.12);
+      outline-offset: -1px;
+      cursor: pointer;
+      transition: transform 0.12s ease, outline-color 0.12s ease;
+    }
+
+    .contrib-cell:hover,
+    .contrib-cell:focus-visible {
+      transform: scale(1.25);
+      outline: 1.5px solid var(--text-primary);
+      z-index: 2;
+    }
+
+    .contrib-cell[data-level="1"] { background-color: var(--gh-level-1); }
+    .contrib-cell[data-level="2"] { background-color: var(--gh-level-2); }
+    .contrib-cell[data-level="3"] { background-color: var(--gh-level-3); }
+    .contrib-cell[data-level="4"] { background-color: var(--gh-level-4); }
+
+    .contrib-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.9rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .contrib-status {
+      min-height: 1.2em;
+      color: var(--text-secondary);
+    }
+
+    .contrib-legend {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .legend-square {
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      display: inline-block;
+      outline: 1px solid rgba(92, 66, 33, 0.16);
+      outline-offset: -1px;
+    }
+
+    /* Technologies Section */
+    .tech-section {
+      padding-block: 1.5rem 2.75rem;
+    }
+
+    .tech-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .tech-header-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-tabs {
+      display: inline-flex;
+      padding: 0.25rem;
+      border-radius: 10px;
+      background: var(--bg-surface-inner);
+      border: 1px solid var(--border-subtle);
+      gap: 0.25rem;
+    }
+
+    .tech-tab {
+      padding: 0.45rem 0.9rem;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+    }
+
+    .tech-tab:hover {
+      color: var(--text-primary);
+    }
+
+    .tech-tab.active {
+      background: #ffffff;
+      color: var(--accent-cyan);
+      box-shadow: 0 2px 8px -2px rgba(72, 48, 18, 0.18);
+    }
+
+    .tech-scope-label {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .tech-project-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-project-pills[hidden] {
+      display: none;
+    }
+
+    .tech-pill {
+      padding: 0.36rem 0.78rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-surface-inner);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition), background-color var(--transition);
+    }
+
+    .tech-pill:hover {
+      color: var(--text-primary);
+      border-color: var(--border-accent);
+    }
+
+    .tech-pill.active {
+      background: var(--accent-glow);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .tech-stacked-bar {
+      display: flex;
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(212, 194, 152, 0.45);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.4rem;
+    }
+
+    .tech-segment {
+      height: 100%;
+      transition: opacity 0.18s ease, width 0.35s ease;
+    }
+
+    .tech-segment:hover {
+      opacity: 0.85;
+    }
+
+    .tech-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem 1.75rem;
+    }
+
+    @media (min-width: 720px) {
+      .tech-card {
+        padding: 1.65rem;
+      }
+
+      .tech-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .tech-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+    }
+
+    .tech-row-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .tech-name-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 0;
+    }
+
+    .tech-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tech-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .tech-meta {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .tech-meta strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .tech-bar-track {
+      width: 100%;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(212, 194, 152, 0.5);
+      overflow: hidden;
+    }
+
+    .tech-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .tech-repos-used {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .tech-footnote {
+      margin-top: 1.25rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Projects Carousel Section */
+    .projects-section {
+      padding-block: 1.5rem 4.5rem;
+      flex: 1;
+    }
+
+    .projects-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .carousel-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(253, 249, 238, 0.86);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.72rem;
+      border-radius: 999px;
+      font-variant-numeric: tabular-nums;
+      margin-right: 0.25rem;
+    }
+
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 16px -6px rgba(72, 48, 18, 0.22);
+      transition: background-color var(--transition), border-color var(--transition), transform var(--transition), color var(--transition);
+    }
+
+    .carousel-btn:hover {
+      background: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .carousel-btn:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 2px;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      padding-block: 6px;
+      margin-block: -6px;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: var(--carousel-gap);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .project-card {
+      flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--carousel-gap)) / var(--cards-per-view));
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), border-color var(--transition), background-color var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .project-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.22rem 0.58rem;
+      border-radius: 999px;
+      background: var(--bg-surface-inner);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tag-highlight {
+      background: var(--accent-glow);
+      color: var(--accent-cyan);
+      border-color: rgba(15, 95, 156, 0.34);
+    }
+
+    .project-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      word-break: break-word;
+    }
+
+    .project-description {
+      font-size: 0.935rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .project-footer {
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .btn-repo {
+      width: 100%;
+      padding: 0.72rem 1rem;
+      font-size: 0.9rem;
+      background: var(--accent-glow);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(15, 95, 156, 0.3);
+    }
+
+    .btn-repo:hover {
+      background: var(--accent-cyan);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+
+    .carousel-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(108, 76, 36, 0.32);
+      cursor: pointer;
+      transition: width var(--transition), background-color var(--transition);
+    }
+
+    .carousel-dot.active {
+      width: 24px;
+      background: var(--accent-cyan);
+    }
+
+    /* SENAI Card Pills & Modal */
+    .senai-modules-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.15rem;
+    }
+
+    .senai-chip {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.22rem 0.55rem;
+      border-radius: 6px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(15, 95, 156, 0.24);
+      color: #0c4a6e;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(26, 20, 12, 0.58);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      max-width: 720px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #fcf6e8;
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: 0 24px 60px -12px rgba(42, 28, 12, 0.45);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-backdrop.is-open .modal-dialog {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1.15rem;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .modal-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-inner);
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: color var(--transition), border-color var(--transition), background-color var(--transition);
+    }
+
+    .modal-close:hover {
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+      background: var(--accent-cyan);
+    }
+
+    .modal-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .modal-repo-item {
+      background: rgba(246, 237, 214, 0.72);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      transition: border-color var(--transition), background-color var(--transition);
+    }
+
+    .modal-repo-item:hover {
+      border-color: var(--border-accent);
+      background: #fffcf3;
+    }
+
+    .modal-repo-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .modal-repo-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      word-break: break-word;
+    }
+
+    .modal-repo-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .modal-repo-link {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      padding: 0.42rem 0.85rem;
+      border-radius: 6px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(15, 95, 156, 0.28);
+      transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    .modal-repo-link:hover {
+      background: var(--accent-cyan);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding-block: 1rem 4rem;
+    }
+
+    .contact-card-shell {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .contact-card-shell .section-eyebrow {
+      color: var(--accent-cyan);
+    }
+
+    .contact-card-shell .section-title {
+      color: var(--text-primary);
+    }
+
+    .contact-intro {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      margin-top: 0.45rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      background: var(--bg-surface-inner);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: border-color var(--transition), transform var(--transition), background-color var(--transition);
+    }
+
+    .contact-item:hover {
+      border-color: var(--border-accent);
+      background: rgba(255, 252, 245, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .contact-item-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn-sm {
+      padding: 0.58rem 0.95rem;
+      font-size: 0.85rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(250, 243, 224, 0.86);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding-block: 1.65rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      text-align: center;
+    }
+
+    /* Mobile-first Breakpoints */
+    @media (min-width: 640px) {
+      :root {
+        --cards-per-view: 2;
+      }
+
+      .container {
+        padding-inline: 2rem;
+      }
+
+      .hero-actions {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .contrib-card {
+        padding: 1.5rem;
+      }
+
+      .contact-card-shell {
+        padding: 2.25rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding-block: 3.5rem 2.75rem;
+      }
+
+      .hero-grid {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+        padding: 2.5rem;
+      }
+
+      .avatar-ring {
+        width: 204px;
+        height: 204px;
+      }
+    }
+
+    @media (min-width: 920px) {
+      :root {
+        --cards-per-view: 3;
+        --carousel-gap: 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+        gap: 2.25rem;
+      }
+
+      .about-content {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fundo: Papel Amassado e Amarelado com Mapa Espelhado de Computação + Foguete Aleatório -->
+  <div class="paper-bg-layer" aria-hidden="true">
+    <!-- Camada 1: Textura orgânica de papel amassado e dobras -->
+    <svg class="paper-texture-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <filter id="paper-crumple" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="5" seed="17" result="noise" />
+          <feDiffuseLighting in="noise" lighting-color="#fff8e3" surfaceScale="2.6" result="light">
+            <feDistantLight azimuth="48" elevation="56" />
+          </feDiffuseLighting>
+          <feColorMatrix type="matrix" values="
+            0.32 0    0    0 0.64
+            0    0.30 0    0 0.60
+            0    0    0.26 0 0.50
+            0    0    0    1 0" />
+        </filter>
+        <pattern id="paper-creases" width="1440" height="900" patternUnits="userSpaceOnUse">
+          <!-- Facetas sutis de amassado -->
+          <polygon points="0,0 380,140 210,390 0,280" fill="rgba(128,90,42,0.045)" />
+          <polygon points="380,140 760,40 610,340 210,390" fill="rgba(255,250,235,0.16)" />
+          <polygon points="760,40 1160,190 980,460 610,340" fill="rgba(120,82,36,0.055)" />
+          <polygon points="1160,190 1440,60 1440,390 980,460" fill="rgba(255,252,238,0.14)" />
+          <polygon points="0,520 340,420 510,720 120,840" fill="rgba(130,92,40,0.05)" />
+          <polygon points="510,720 960,520 1180,860 680,900" fill="rgba(116,78,32,0.045)" />
+          <polygon points="960,520 1440,480 1440,860 1180,860" fill="rgba(255,250,234,0.12)" />
+          <!-- Vincos e dobras principais -->
+          <g fill="none" stroke-linecap="round">
+            <path d="M-20,175 L380,140 L760,40 L1160,190 L1460,65" stroke="rgba(104,70,28,0.16)" stroke-width="1.5" />
+            <path d="M-20,177 L380,142 L760,42 L1160,192 L1460,67" stroke="rgba(255,252,240,0.45)" stroke-width="1.2" />
+            <path d="M210,-10 L210,390 L340,420 L510,720 L480,920" stroke="rgba(104,70,28,0.14)" stroke-width="1.4" />
+            <path d="M212,-10 L212,390 L342,420 L512,720 L482,920" stroke="rgba(255,252,240,0.42)" stroke-width="1.1" />
+            <path d="M610,340 L980,460 L1450,390" stroke="rgba(104,70,28,0.15)" stroke-width="1.3" />
+            <path d="M610,342 L980,462 L1450,392" stroke="rgba(255,252,240,0.4)" stroke-width="1" />
+            <path d="M120,840 L510,720 L960,520 L1180,860" stroke="rgba(104,70,28,0.14)" stroke-width="1.3" />
+            <path d="M880,-10 L760,40 L610,340 L340,420 L-10,530" stroke="rgba(112,76,34,0.12)" stroke-width="1.1" />
+            <path d="M1160,190 L980,460 L960,520 L840,910" stroke="rgba(112,76,34,0.12)" stroke-width="1.1" />
+          </g>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" filter="url(#paper-crumple)" />
+      <rect width="100%" height="100%" fill="url(#paper-creases)" />
+    </svg>
+
+    <!-- Camada 2: Mapa espelhado desenhado à mão (Algoritmos, Hardware, Mainframes, Linguagens, SENAI & FATEC) -->
+    <svg class="paper-sketch-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="sketch-tile">
+          <!-- Grade sutil de caderno técnico -->
+          <g stroke="rgba(102, 74, 38, 0.08)" stroke-width="0.9">
+            <line x1="0" y1="95" x2="760" y2="95" />
+            <line x1="0" y1="190" x2="760" y2="190" />
+            <line x1="0" y1="285" x2="760" y2="285" />
+            <line x1="0" y1="380" x2="760" y2="380" />
+            <line x1="0" y1="475" x2="760" y2="475" />
+            <line x1="0" y1="570" x2="760" y2="570" />
+            <line x1="0" y1="665" x2="760" y2="665" />
+            <line x1="95" y1="0" x2="95" y2="760" />
+            <line x1="190" y1="0" x2="190" y2="760" />
+            <line x1="285" y1="0" x2="285" y2="760" />
+            <line x1="380" y1="0" x2="380" y2="760" />
+            <line x1="475" y1="0" x2="475" y2="760" />
+            <line x1="570" y1="0" x2="570" y2="760" />
+            <line x1="665" y1="0" x2="665" y2="760" />
+          </g>
+
+          <!-- Mancha sutil de anel de café no papel antigo -->
+          <circle cx="645" cy="145" r="46" fill="none" stroke="rgba(122, 78, 30, 0.09)" stroke-width="5" stroke-dasharray="18 5 40 6 24 4" />
+          <circle cx="647" cy="147" r="43" fill="none" stroke="rgba(122, 78, 30, 0.05)" stroke-width="2" />
+
+          <!-- Tinta principal dos esboços em caderno -->
+          <g fill="none" stroke="#3b2b18" stroke-linecap="round" stroke-linejoin="round" opacity="0.21">
+            <!-- 1. Algoritmos Matemáticos & Grafos no papel -->
+            <g transform="translate(36, 36)">
+              <text x="0" y="16" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">f(n) = O(n log n)</text>
+              <path d="M0,22 Q68,18 134,23" stroke-width="1.3" />
+              <text x="4" y="46" fill="#3b2b18" stroke="none" font-family="serif" font-size="15" font-style="italic">Σ (wᵢ·xᵢ) + b  |  ∫ eˣ dx</text>
+              <!-- Árvore Binária desenhada -->
+              <circle cx="72" cy="76" r="11" stroke-width="1.5" />
+              <text x="65" y="80" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">50</text>
+              <path d="M63,84 L38,107 M81,84 L106,107" stroke-width="1.4" />
+              <circle cx="32" cy="116" r="10" stroke-width="1.4" />
+              <text x="26" y="120" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">25</text>
+              <circle cx="112" cy="116" r="10" stroke-width="1.4" />
+              <text x="106" y="120" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">75</text>
+              <path d="M25,124 L10,145 M39,124 L54,145 M105,124 L90,145 M119,124 L134,145" stroke-width="1.2" />
+              <circle cx="8" cy="152" r="7" stroke-width="1.2" />
+              <circle cx="56" cy="152" r="7" stroke-width="1.2" />
+              <circle cx="88" cy="152" r="7" stroke-width="1.2" />
+              <circle cx="136" cy="152" r="7" stroke-width="1.2" />
+              <!-- Fluxograma -->
+              <g transform="translate(168, 46)">
+                <polygon points="44,0 84,22 44,44 4,22" stroke-width="1.4" />
+                <text x="25" y="25" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">x &gt; 0?</text>
+                <path d="M44,44 L44,64 L40,59 M44,64 L48,59" stroke-width="1.3" />
+                <rect x="8" y="66" width="72" height="24" rx="4" stroke-width="1.4" />
+                <text x="16" y="81" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">f(n - 1)</text>
+                <path d="M84,22 L106,22 L106,78 L82,78" stroke-width="1.2" stroke-dasharray="4 3" />
+              </g>
+            </g>
+
+            <!-- 2. Grafo Ponderado Dijkstra / A* (canto superior direito) -->
+            <g transform="translate(458, 38)">
+              <text x="0" y="14" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DIJKSTRA // A*</text>
+              <circle cx="24" cy="54" r="13" stroke-width="1.5" />
+              <text x="20" y="58" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">S</text>
+              <circle cx="106" cy="36" r="13" stroke-width="1.5" />
+              <text x="102" y="40" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">B</text>
+              <circle cx="102" cy="108" r="13" stroke-width="1.5" />
+              <text x="98" y="112" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">C</text>
+              <circle cx="188" cy="72" r="14" stroke-width="1.7" />
+              <text x="184" y="76" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">T</text>
+              <path d="M37,51 L92,38 M35,62 L90,101 M119,41 L175,65 M115,104 L175,78 M104,50 L103,94" stroke-width="1.3" />
+              <text x="58" y="38" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">4</text>
+              <text x="56" y="92" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">2</text>
+              <text x="148" y="48" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">5</text>
+              <text x="146" y="102" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">3</text>
+              <text x="110" y="76" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">1</text>
+            </g>
+
+            <!-- 3. Hardware Desenhado (CPU Microchip + Pinos + RAM + Portas Lógicas) -->
+            <g transform="translate(38, 260)">
+              <rect x="34" y="24" width="66" height="66" rx="6" stroke-width="1.8" />
+              <rect x="46" y="36" width="42" height="42" rx="3" stroke-width="1.3" />
+              <path d="M48,74 L86,38 M58,76 L86,48 M48,60 L72,38" stroke-width="0.9" opacity="0.65" />
+              <text x="54" y="61" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">CPU</text>
+              <!-- Pinos da CPU e trilhas PCB -->
+              <path d="M45,10 V24 M57,10 V24 M69,10 V24 M81,10 V24 M45,90 V106 M57,90 V106 M69,90 V106 M81,90 V106" stroke-width="1.5" />
+              <path d="M18,36 H34 M18,48 H34 M18,60 H34 M18,72 H34 M100,36 H120 M100,48 H128 M100,60 H120 M100,72 H128" stroke-width="1.5" />
+              <circle cx="15" cy="36" r="2.5" /><circle cx="15" cy="60" r="2.5" /><circle cx="132" cy="48" r="2.5" /><circle cx="132" cy="72" r="2.5" />
+              <text x="42" y="122" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">ALU • CLK • BUS</text>
+              <!-- Pente de Memória RAM desenhado -->
+              <g transform="translate(154, 18)">
+                <rect x="0" y="0" width="118" height="36" rx="3" stroke-width="1.6" />
+                <rect x="10" y="8" width="16" height="16" stroke-width="1.2" />
+                <rect x="32" y="8" width="16" height="16" stroke-width="1.2" />
+                <rect x="54" y="8" width="16" height="16" stroke-width="1.2" />
+                <rect x="76" y="8" width="16" height="16" stroke-width="1.2" />
+                <rect x="98" y="8" width="12" height="16" stroke-width="1.2" />
+                <path d="M8,36 V42 M16,36 V42 M24,36 V42 M32,36 V42 M40,36 V42 M58,36 V42 M66,36 V42 M74,36 V42 M82,36 V42 M90,36 V42 M98,36 V42 M106,36 V42" stroke-width="1.2" />
+                <text x="34" y="56" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">RAM DDR</text>
+              </g>
+              <!-- Portas Lógicas AND & XOR -->
+              <g transform="translate(160, 88)">
+                <path d="M0,6 H16 M0,20 H16 M16,0 H30 A13,13 0 0,1 30,26 H16 Z M43,13 H58" stroke-width="1.4" />
+                <text x="20" y="16" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="8">AND</text>
+                <g transform="translate(70, 0)">
+                  <path d="M0,6 H14 M0,20 H14 M11,0 Q18,13 11,26 M16,0 Q23,13 16,26 Q34,26 44,13 Q34,0 16,0 M44,13 H58" stroke-width="1.4" />
+                  <text x="19" y="16" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="8">XOR</text>
+                </g>
+              </g>
+            </g>
+
+            <!-- 4. Evolução dos Mainframes (Antigamente -> Torre -> Cloud Rack Hoje) -->
+            <g transform="translate(362, 226)">
+              <text x="0" y="12" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">EVOLUÇÃO: MAINFRAME → CLOUD</text>
+              <!-- 1965 Tape Mainframe -->
+              <g transform="translate(4, 24)">
+                <rect x="0" y="0" width="84" height="106" rx="4" stroke-width="1.7" />
+                <rect x="7" y="8" width="70" height="40" rx="3" stroke-width="1.2" />
+                <circle cx="25" cy="28" r="13" stroke-width="1.4" />
+                <circle cx="25" cy="28" r="4" stroke-width="1.2" />
+                <circle cx="59" cy="28" r="13" stroke-width="1.4" />
+                <circle cx="59" cy="28" r="4" stroke-width="1.2" />
+                <path d="M25,41 L59,41" stroke-width="1.1" />
+                <rect x="10" y="56" width="64" height="16" stroke-width="1.1" />
+                <path d="M16,64 H20 M26,64 H30 M36,64 H40 M46,64 H50 M56,64 H66" stroke-width="1.8" />
+                <rect x="10" y="78" width="64" height="20" stroke-width="1.1" />
+                <path d="M14,84 H70 M14,89 H70 M14,94 H70" stroke-width="0.9" />
+                <text x="2" y="122" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">1965 TAPE</text>
+              </g>
+              <!-- Seta -->
+              <path d="M96,76 H120 L114,71 M120,76 L114,81" stroke-width="1.4" stroke-dasharray="4 3" />
+              <!-- 1995 Tower + CRT -->
+              <g transform="translate(128, 36)">
+                <rect x="0" y="16" width="44" height="78" rx="3" stroke-width="1.6" />
+                <rect x="7" y="25" width="30" height="7" stroke-width="1.1" />
+                <rect x="7" y="36" width="30" height="7" stroke-width="1.1" />
+                <path d="M10,54 H34 M10,60 H34 M10,66 H34" stroke-width="1" />
+                <circle cx="22" cy="80" r="4" stroke-width="1.2" />
+                <rect x="52" y="24" width="42" height="34" rx="4" stroke-width="1.5" />
+                <rect x="57" y="29" width="32" height="22" rx="2" stroke-width="1.1" />
+                <path d="M64,58 L60,68 H86 L82,58" stroke-width="1.3" />
+                <text x="6" y="110" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">1995 SERVER</text>
+              </g>
+              <!-- Seta -->
+              <path d="M230,76 H254 L248,71 M254,76 L248,81" stroke-width="1.4" stroke-dasharray="4 3" />
+              <!-- Hoje: Server Rack + Cloud -->
+              <g transform="translate(262, 18)">
+                <path d="M20,24 A12,12 0 0,1 42,16 A14,14 0 0,1 68,20 A10,10 0 0,1 66,38 H22 A9,9 0 0,1 20,24 Z" stroke-width="1.4" />
+                <path d="M44,38 V48" stroke-width="1.2" stroke-dasharray="2 2" />
+                <rect x="10" y="48" width="68" height="66" rx="3" stroke-width="1.7" />
+                <rect x="16" y="54" width="56" height="12" rx="1.5" stroke-width="1.1" />
+                <rect x="16" y="70" width="56" height="12" rx="1.5" stroke-width="1.1" />
+                <rect x="16" y="86" width="56" height="12" rx="1.5" stroke-width="1.1" />
+                <path d="M21,60 H38 M56,60 H66 M21,76 H38 M56,76 H66 M21,92 H38 M56,92 H66" stroke-width="1.3" />
+                <text x="8" y="130" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">HOJE • RACK</text>
+              </g>
+            </g>
+
+            <!-- 5. Logos das Linguagens Utilizadas (Python, C, C#, JS, Dart, SQL) -->
+            <g transform="translate(40, 466)">
+              <text x="0" y="12" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">STACK &amp; LINGUAGENS</text>
+              <!-- Python -->
+              <g transform="translate(0, 26)">
+                <rect x="0" y="0" width="56" height="56" rx="10" stroke-width="1.5" />
+                <path d="M28,11 C19,11 18,16 18,22 H29 V25 H15 C11,25 10,29 10,34 C10,39 12,42 16,42 H20 V36 C20,32 23,30 27,30 H35 C38,30 39,28 39,25 V17 C39,13 36,11 28,11 Z" stroke-width="1.3" />
+                <path d="M28,45 C37,45 38,40 38,34 H27 V31 H41 C45,31 46,27 46,22 C46,17 44,14 40,14 H36 V20 C36,24 33,26 29,26 H21 C18,26 17,28 17,31 V39 C17,43 20,45 28,45 Z" stroke-width="1.3" />
+                <circle cx="23" cy="17" r="1.4" fill="#3b2b18" />
+                <circle cx="33" cy="39" r="1.4" fill="#3b2b18" />
+                <text x="10" y="70" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">Python</text>
+              </g>
+              <!-- C -->
+              <g transform="translate(74, 26)">
+                <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" stroke-width="1.6" />
+                <path d="M36,21 A11,11 0 1,0 36,35" stroke-width="2.6" />
+                <text x="24" y="70" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">C</text>
+              </g>
+              <!-- C# -->
+              <g transform="translate(144, 26)">
+                <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" stroke-width="1.6" />
+                <path d="M30,21 A10,10 0 1,0 30,35 M38,22 L36,34 M44,22 L42,34 M34,26 H46 M33,30 H45" stroke-width="2" />
+                <text x="21" y="70" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">C#</text>
+              </g>
+              <!-- JS -->
+              <g transform="translate(216, 26)">
+                <rect x="2" y="2" width="52" height="52" rx="4" stroke-width="1.6" />
+                <text x="18" y="42" fill="#3b2b18" stroke="none" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="800">JS</text>
+                <text x="21" y="70" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">JS</text>
+              </g>
+              <!-- Dart / Flutter -->
+              <g transform="translate(288, 26)">
+                <rect x="0" y="0" width="56" height="56" rx="10" stroke-width="1.4" />
+                <polygon points="14,22 28,10 44,26 44,40 31,44 14,28" stroke-width="1.4" />
+                <path d="M14,22 L32,22 L44,34 M28,10 L32,22" stroke-width="1.2" />
+                <text x="16" y="70" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">Dart</text>
+              </g>
+              <!-- SQL -->
+              <g transform="translate(362, 26)">
+                <ellipse cx="28" cy="14" rx="20" ry="7" stroke-width="1.5" />
+                <path d="M8,14 V42 C8,46 17,49 28,49 C39,49 48,46 48,42 V14 M8,24 C8,28 17,31 28,31 C39,31 48,28 48,24 M8,33 C8,37 17,40 28,40 C39,40 48,37 48,33" stroke-width="1.4" />
+                <text x="18" y="70" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">SQL</text>
+              </g>
+            </g>
+
+            <!-- 6. Logos Desenhados do SENAI e da FATEC -->
+            <g transform="translate(46, 598)">
+              <!-- SENAI -->
+              <g transform="translate(0, 0)">
+                <rect x="0" y="6" width="166" height="62" rx="6" stroke-width="1.8" />
+                <path d="M6,16 H160 M6,58 H160" stroke-width="1" stroke-dasharray="3 2" />
+                <!-- Engrenagem desenhada -->
+                <circle cx="32" cy="37" r="12" stroke-width="1.6" />
+                <circle cx="32" cy="37" r="5" stroke-width="1.3" />
+                <path d="M32,21 V25 M32,49 V53 M16,37 H20 M44,37 H48 M21,26 L24,29 M40,45 L43,48 M43,26 L40,29 M24,45 L21,48" stroke-width="1.8" />
+                <text x="56" y="42" fill="#3b2b18" stroke="none" font-family="Space Grotesk, sans-serif" font-size="23" font-weight="800" letter-spacing="2">SENAI</text>
+                <text x="58" y="54" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="7.5">DESENVOLVIMENTO DE SISTEMAS</text>
+              </g>
+
+              <!-- FATEC -->
+              <g transform="translate(206, 0)">
+                <rect x="0" y="6" width="168" height="62" rx="6" stroke-width="1.8" />
+                <!-- Barras arquitetônicas estilo FATEC -->
+                <path d="M14,22 H44 M14,31 H38 M14,40 H44 M14,49 H32" stroke-width="3.2" />
+                <text x="54" y="41" fill="#3b2b18" stroke="none" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="800" letter-spacing="1.5">FATEC</text>
+                <text x="55" y="54" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="7.5">ANÁLISE E DESENV. SISTEMAS</text>
+              </g>
+            </g>
+
+            <!-- 7. Anotações extras de algoritmo / binário nas bordas -->
+            <g transform="translate(500, 480)">
+              <text x="0" y="14" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">01001011 11010010</text>
+              <text x="0" y="34" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="10">while (!done) solve();</text>
+              <path d="M12,56 Q62,38 112,62 T202,50" stroke-width="1.3" stroke-dasharray="5 4" />
+              <circle cx="112" cy="62" r="3.5" fill="#3b2b18" />
+              <text x="122" y="78" fill="#3b2b18" stroke="none" font-family="JetBrains Mono, monospace" font-size="9">∇L(θ) → min</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- Padrão 2x2 ESPELHADO pelo mapa (horizontal e vertical) -->
+        <pattern id="sketch-map" width="1520" height="1520" patternUnits="userSpaceOnUse">
+          <use href="#sketch-tile" x="0" y="0" />
+          <use href="#sketch-tile" transform="translate(1520, 0) scale(-1, 1)" />
+          <use href="#sketch-tile" transform="translate(0, 1520) scale(1, -1)" />
+          <use href="#sketch-tile" transform="translate(1520, 1520) scale(-1, -1)" />
+          <!-- Eixo tracejado de espelho do mapa -->
+          <line x1="760" y1="0" x2="760" y2="1520" stroke="rgba(104, 70, 28, 0.14)" stroke-width="1.2" stroke-dasharray="7 7" />
+          <line x1="0" y1="760" x2="1520" y2="760" stroke="rgba(104, 70, 28, 0.14)" stroke-width="1.2" stroke-dasharray="7 7" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#sketch-map)" />
+    </svg>
+
+    <div class="paper-vignette"></div>
+
+    <!-- Camada 3: Trilha + Foguete desenhado voando aleatoriamente pelo mapa -->
+    <div id="rocket-trail-layer"></div>
+    <div id="sketch-rocket" class="sketch-rocket-wrap">
+      <svg viewBox="0 0 68 92" width="68" height="92" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Chama desenhada na base -->
+        <g class="rocket-flame">
+          <path d="M27,66 Q34,88 41,66" fill="rgba(217, 119, 6, 0.55)" stroke="#7c2d12" stroke-width="1.6" stroke-linecap="round" />
+          <path d="M30,66 Q34,79 38,66" fill="rgba(251, 191, 36, 0.72)" stroke="#b45309" stroke-width="1.1" stroke-linecap="round" />
+        </g>
+        <!-- Aletas laterais -->
+        <path d="M22,48 L10,63 L21,61 Z" fill="rgba(14, 116, 144, 0.25)" stroke="#2c1e10" stroke-width="2" stroke-linejoin="round" />
+        <path d="M46,48 L58,63 L47,61 Z" fill="rgba(14, 116, 144, 0.25)" stroke="#2c1e10" stroke-width="2" stroke-linejoin="round" />
+        <!-- Corpo principal do foguete -->
+        <path d="M34,6 C45,20 48,38 46,60 L22,60 C20,38 23,20 34,6 Z" fill="#f7eed3" stroke="#2c1e10" stroke-width="2.1" stroke-linejoin="round" />
+        <!-- Hachura e detalhes de lápis/caneta -->
+        <path d="M26,22 Q34,20 42,22 M26,60 L24,66 H44 L42,60" stroke="#2c1e10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M40,26 L44,30 M41,34 L45,38 M41,42 L45,46" stroke="#2c1e10" stroke-width="1" opacity="0.6" stroke-linecap="round" />
+        <!-- Escotilha -->
+        <circle cx="34" cy="36" r="7" fill="rgba(56, 189, 248, 0.35)" stroke="#2c1e10" stroke-width="1.9" />
+        <path d="M31,33 A4,4 0 0,1 36,32" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" />
+        <!-- Estrelinhas desenhadas perto do foguete -->
+        <path d="M12,24 L14,28 L18,30 L14,32 L12,36 L10,32 L6,30 L10,28 Z" stroke="#3b2b18" stroke-width="1" opacity="0.55" />
+        <circle cx="56" cy="20" r="1.8" fill="#3b2b18" opacity="0.5" />
+      </svg>
+    </div>
+  </div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Samuel Pinheiro</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre mim</a>
+        <a href="#recorrencia">Recorrência</a>
+        <a href="#tecnologias">Tecnologias</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">Samuel Pinheiro</h1>
+          <p class="hero-subtitle">Estudante de Análise e Desenvolvimento de Sistemas</p>
+          <p class="hero-description">
+            Estudante de Análise e Desenvolvimento de Sistemas na Fatec e do curso técnico em Desenvolvimento de Sistemas no SENAI. Este perfil reúne projetos acadêmicos, ideias em desenvolvimento e as anotações do curso técnico.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="https://www.linkedin.com/in/sppdes/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+              <span>Conectar no LinkedIn</span>
+            </a>
+
+            <a
+              href="https://github.com/SamuelppDes"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-profile" aria-label="Foto de perfil do GitHub">
+          <div class="avatar-ring">
+            <img
+              src="https://avatars.githubusercontent.com/u/227909624?v=4"
+              alt="Foto de perfil de Samuel Pinheiro no GitHub"
+              class="avatar-img"
+              width="204"
+              height="204"
+            >
+          </div>
+          <span class="profile-meta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Santos, SP &bull; @SamuelppDes</span>
+          </span>
+          <a
+            href="https://www.linkedin.com/in/sppdes/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="profile-meta profile-link"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+            <span>linkedin.com/in/sppdes/</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre" class="about-section">
+      <div class="container about-grid">
+        <div class="code-window" aria-label="Resumo técnico em formato de código">
+          <div class="code-window-bar">
+            <div class="window-dots" aria-hidden="true">
+              <span class="window-dot window-dot-red"></span>
+              <span class="window-dot window-dot-yellow"></span>
+              <span class="window-dot window-dot-green"></span>
+            </div>
+            <span class="code-filename">samuel.c</span>
+          </div>
+          <div class="code-body">
+            <div class="code-line"><span class="line-num">1</span><span><span class="tok-kw">#include</span> <span class="tok-str">&lt;stdbool.h&gt;</span></span></div>
+            <div class="code-line"><span class="line-num">2</span><span></span></div>
+            <div class="code-line"><span class="line-num">3</span><span><span class="tok-kw">typedef struct</span> {</span></div>
+            <div class="code-line"><span class="line-num">4</span><span>  <span class="tok-kw">const char</span> *<span class="tok-key">nome</span>;</span></div>
+            <div class="code-line"><span class="line-num">5</span><span>  <span class="tok-kw">const char</span> *<span class="tok-key">cargo</span>;</span></div>
+            <div class="code-line"><span class="line-num">6</span><span>  <span class="tok-kw">const char</span> *<span class="tok-key">formacao</span>;</span></div>
+            <div class="code-line"><span class="line-num">7</span><span>  <span class="tok-kw">const char</span> *<span class="tok-key">foco</span>[3];</span></div>
+            <div class="code-line"><span class="line-num">8</span><span>  <span class="tok-kw">bool</span> <span class="tok-key">disponivel</span>;</span></div>
+            <div class="code-line"><span class="line-num">9</span><span>} <span class="tok-var">Developer</span>;</span></div>
+            <div class="code-line"><span class="line-num">10</span><span></span></div>
+            <div class="code-line"><span class="line-num">11</span><span><span class="tok-var">Developer</span> samuel = {</span></div>
+            <div class="code-line"><span class="line-num">12</span><span>  .<span class="tok-key">nome</span>       = <span class="tok-str">"Samuel Pinheiro"</span>,</span></div>
+            <div class="code-line"><span class="line-num">13</span><span>  .<span class="tok-key">cargo</span>      = <span class="tok-str">"Product Intern @ Zukkin"</span>,</span></div>
+            <div class="code-line"><span class="line-num">14</span><span>  .<span class="tok-key">formacao</span>   = <span class="tok-str">"ADS (Fatec) &amp; SENAI"</span>,</span></div>
+            <div class="code-line"><span class="line-num">15</span><span>  .<span class="tok-key">foco</span>       = {</span></div>
+            <div class="code-line"><span class="line-num">16</span><span>    <span class="tok-str">"Python, SQL &amp; ETL"</span>,</span></div>
+            <div class="code-line"><span class="line-num">17</span><span>    <span class="tok-str">"Dados &amp; Automação"</span>,</span></div>
+            <div class="code-line"><span class="line-num">18</span><span>    <span class="tok-str">"IA &amp; Cloud (GCP / OCI)"</span></span></div>
+            <div class="code-line"><span class="line-num">19</span><span>  },</span></div>
+            <div class="code-line"><span class="line-num">20</span><span>  .<span class="tok-key">disponivel</span> = <span class="tok-bool">true</span> <span class="tok-comment">//</span><span class="status-dot-inline" aria-hidden="true"></span></span></div>
+            <div class="code-line"><span class="line-num">21</span><span>};</span></div>
+            <div class="code-line"><span class="line-num">22</span><span></span></div>
+            <div class="code-line"><span class="line-num">23</span><span class="tok-comment">// Transformando dados e processos em resultado.</span></div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <p class="section-eyebrow">Sobre Mim</p>
+          <h2 class="about-heading">Tecnologia aplicada a dados, automação e negócios</h2>
+          <p class="about-text">
+            Tenho 23 anos, moro em Santos (SP) e sou estudante do 4º semestre de Análise e Desenvolvimento de Sistemas na Fatec Rubens Lara e do curso Técnico em Desenvolvimento de Sistemas no SENAI. Atualmente atuo como Product Intern na Zukkin, trabalhando diretamente com o Zrobot no acompanhamento de coleta e tratamento de dados, revisão de precificações via crawler/scraper e liberação de entregas para os clientes.
+          </p>
+          <p class="about-text">
+            Antes da transição para a área de tecnologia, atuei como Key Account Manager na China Link Trading, gerenciando operações de importação door-to-door da China para o Brasil em uma carteira superior a R$ 1,5 milhão. Essa vivência me ensinou a ter atenção aos detalhes, organização de processos e trabalho em equipe — base que hoje levo para minha jornada de aprendizado contínuo em Dados, Automação e Suporte, buscando evoluir na prática com Python, SQL, ETL, IA e Cloud Computing.
+          </p>
+
+          <div class="about-certs" aria-label="Certificações">
+            <span class="tag tag-highlight">Google Cloud Engineering</span>
+            <span class="tag tag-highlight">Google Cloud Foundations</span>
+            <span class="tag">OCI Foundations</span>
+            <span class="tag">OCI AI Foundations</span>
+            <span class="tag">OCI AI Agents</span>
+          </div>
+
+          <div class="about-metrics">
+            <div>
+              <span class="metric-value">2+</span>
+              <span class="metric-label">Anos de Experiência</span>
+            </div>
+            <div>
+              <span class="metric-value">5</span>
+              <span class="metric-label">Certificações</span>
+            </div>
+            <div>
+              <span class="metric-value">5+</span>
+              <span class="metric-label">Projetos no Portfólio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recorrencia" class="activity-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="section-eyebrow">Consistência e Código</p>
+            <h2 class="section-title">Recorrência no GitHub</h2>
+          </div>
+        </div>
+
+        <div class="contrib-card">
+          <div class="contrib-top">
+            <p class="contrib-count">
+              <span>32 contribuições públicas</span> registradas no último ano
+            </p>
+            <div class="contrib-years" aria-label="Período exibido">
+              <span class="year-pill">2025</span>
+              <span class="year-pill active">2026</span>
+            </div>
+          </div>
+
+          <div class="contrib-scroll">
+            <div class="contrib-wrapper" aria-label="Tabela de recorrência de contribuições no GitHub">
+              <div id="contrib-months" class="contrib-months" aria-hidden="true"></div>
+              <div class="contrib-weekdays" aria-hidden="true">
+                <span></span>
+                <span>Seg</span>
+                <span></span>
+                <span>Qua</span>
+                <span></span>
+                <span>Sex</span>
+                <span></span>
+              </div>
+              <div id="contrib-grid" class="contrib-grid" role="grid" aria-label="Calendário de contribuições de novembro de 2025 a novembro de 2026"></div>
+            </div>
+          </div>
+
+          <div class="contrib-footer">
+            <span id="contrib-status" class="contrib-status">Passe o cursor ou toque em um quadrado para ver a data.</span>
+            <div class="contrib-legend" aria-label="Legenda de intensidade de contribuições">
+              <span>Menos</span>
+              <span class="legend-square" style="background-color: var(--gh-level-0);" title="Sem contribuições"></span>
+              <span class="legend-square" style="background-color: var(--gh-level-1);" title="Baixa"></span>
+              <span class="legend-square" style="background-color: var(--gh-level-2);" title="Moderada"></span>
+              <span class="legend-square" style="background-color: var(--gh-level-3);" title="Alta"></span>
+              <span class="legend-square" style="background-color: var(--gh-level-4);" title="Intensa"></span>
+              <span>Mais</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologias" class="tech-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="section-eyebrow">Stack e Distribuição</p>
+            <h2 class="section-title">Tecnologias Utilizadas</h2>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-header-bar">
+            <div class="tech-tabs" role="tablist" aria-label="Modo de visualização das tecnologias">
+              <button type="button" id="tab-tech-geral" class="tech-tab active" role="tab" aria-selected="true">
+                Visão Geral (%)
+              </button>
+              <button type="button" id="tab-tech-projeto" class="tech-tab" role="tab" aria-selected="false">
+                Por Projeto
+              </button>
+            </div>
+            <span id="tech-scope-label" class="tech-scope-label">
+              Todos os repositórios públicos (691,0 KB de código)
+            </span>
+          </div>
+
+          <div id="tech-project-pills" class="tech-project-pills" hidden aria-label="Filtrar por repositório"></div>
+
+          <div id="tech-stacked-bar" class="tech-stacked-bar" aria-label="Barra proporcional de linguagens"></div>
+
+          <div id="tech-list" class="tech-list"></div>
+
+          <p id="tech-footnote" class="tech-footnote">
+            Percentuais calculados a partir dos bytes de código detectados pela API pública do GitHub nos seus repositórios (@SamuelppDes).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="projects-section">
+      <div class="container">
+        <div class="projects-header-row">
+          <div>
+            <p class="section-eyebrow">Portfólio Técnico</p>
+            <h2 class="section-title">Meus Projetos</h2>
+          </div>
+
+          <div class="carousel-controls" aria-label="Controles do carrossel de projetos">
+            <span id="carousel-counter" class="carousel-counter">1–3 de 5</span>
+            <button type="button" id="carousel-prev" class="carousel-btn" aria-label="Projeto anterior">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+            </button>
+            <button type="button" id="carousel-next" class="carousel-btn" aria-label="Próximo projeto">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-viewport" id="carousel-viewport" tabindex="0" aria-roledescription="carrossel" aria-label="Carrossel de projetos do GitHub">
+          <div class="carousel-track" id="carousel-track">
+            <!-- 1. Caderno do SENAI (Agrupando todos os repositórios do SENAI) -->
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                  </svg>
+                </div>
+                <div class="project-tags">
+                  <span class="tag tag-highlight">5 Módulos</span>
+                  <span class="tag">SQL</span>
+                  <span class="tag">C#</span>
+                  <span class="tag">Flutter</span>
+                </div>
+              </div>
+              <h3 class="project-name">Caderno do SENAI</h3>
+              <p class="project-description">
+                Trabalhos do curso técnico em Desenvolvimento de Sistemas organizados por módulo: Banco de Dados, API REST, Testes de Back-end, BD Mobile e o app Coma Bem.
+              </p>
+              <div class="senai-modules-preview" aria-label="Módulos incluídos">
+                <span class="senai-chip">Mod. 9 · SQL</span>
+                <span class="senai-chip">Mod. 10 · API C#</span>
+                <span class="senai-chip">Mod. 11 · Testes</span>
+                <span class="senai-chip">Mod. 12 · BD Mobile</span>
+                <span class="senai-chip">Mod. 13 · Coma Bem</span>
+              </div>
+              <div class="project-footer">
+                <button type="button" id="open-senai-modal" class="btn btn-repo">
+                  Ver Repositórios do SENAI (5)
+                </button>
+              </div>
+            </article>
+
+            <!-- 2. LicitHub -->
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 2 7l10 5 10-5-10-5z"/>
+                    <path d="m2 17 10 5 10-5"/>
+                    <path d="m2 12 10 5 10-5"/>
+                  </svg>
+                </div>
+                <div class="project-tags">
+                  <span class="tag">C#</span>
+                  <span class="tag">ASP.NET Core</span>
+                  <span class="tag">Flutter</span>
+                </div>
+              </div>
+              <h3 class="project-name">licithub</h3>
+              <p class="project-description">
+                Plataforma inteligente de recomendação de licitações públicas (TCC) que conecta empresas a editais compatíveis com seu perfil e facilita a busca.
+              </p>
+              <div class="project-footer">
+                <a href="https://github.com/SamuelppDes/licithub" target="_blank" rel="noopener noreferrer" class="btn btn-repo">
+                  Ver Repositório
+                </a>
+              </div>
+            </article>
+
+            <!-- 3. Beex Contabilidade -->
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                </div>
+                <div class="project-tags">
+                  <span class="tag">React</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">JWT</span>
+                </div>
+              </div>
+              <h3 class="project-name">Beex---Contabilidade-</h3>
+              <p class="project-description">
+                Plataforma web de gestão contábil com site institucional, autenticação JWT, plano de contas, lançamentos e relatórios financeiros.
+              </p>
+              <div class="project-footer">
+                <a href="https://github.com/SamuelppDes/Beex---Contabilidade-" target="_blank" rel="noopener noreferrer" class="btn btn-repo">
+                  Ver Repositório
+                </a>
+              </div>
+            </article>
+
+            <!-- 4. GDP Dashboard (Python) -->
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="m19 9-5 5-4-4-3 3"/>
+                  </svg>
+                </div>
+                <div class="project-tags">
+                  <span class="tag tag-highlight">Python</span>
+                  <span class="tag">Streamlit</span>
+                  <span class="tag">Pandas</span>
+                </div>
+              </div>
+              <h3 class="project-name">gdp-dashboard</h3>
+              <p class="project-description">
+                Dashboard interativo em Python com Streamlit e Pandas para visualização e análise comparativa do PIB de países ao redor do mundo.
+              </p>
+              <div class="project-footer">
+                <a href="https://github.com/SamuelppDes/gdp-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-repo">
+                  Ver Repositório
+                </a>
+              </div>
+            </article>
+
+            <!-- 5. Flappy Original -->
+            <article class="project-card">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4"/>
+                    <path d="M8 10v4"/>
+                    <circle cx="16" cy="11" r="1"/>
+                    <circle cx="18" cy="13" r="1"/>
+                  </svg>
+                </div>
+                <div class="project-tags">
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">HTML/CSS</span>
+                  <span class="tag">Python</span>
+                </div>
+              </div>
+              <h3 class="project-name">Flappy-Original</h3>
+              <p class="project-description">
+                Jogo no estilo Flappy Bird criado com JavaScript, HTML e CSS, utilizando arte autoral e scripts em Python para processamento de sprites.
+              </p>
+              <div class="project-footer">
+                <a href="https://github.com/SamuelppDes/Flappy-Original" target="_blank" rel="noopener noreferrer" class="btn btn-repo">
+                  Ver Repositório
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="carousel-dots" class="carousel-dots" aria-label="Indicadores do carrossel"></div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+      <div class="container">
+        <div class="contact-card-shell">
+          <p class="section-eyebrow">Contato</p>
+          <h2 class="section-title">Vamos conversar?</h2>
+          <p class="contact-intro">
+            Aberto a oportunidades, projetos e conexões na área de dados, automação, suporte e desenvolvimento de software.
+          </p>
+
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-item-head">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-label">E-mail</p>
+                  <p class="contact-value">sppdes@gmail.com</p>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <a href="mailto:sppdes@gmail.com" class="btn btn-primary btn-sm">
+                  Enviar e-mail
+                </a>
+                <button type="button" id="copy-email-btn" class="btn btn-secondary btn-sm">
+                  Copiar e-mail
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-head">
+                <div class="project-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-label">LinkedIn</p>
+                  <p class="contact-value">linkedin.com/in/sppdes/</p>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <a
+                  href="https://www.linkedin.com/in/sppdes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-repo btn-sm"
+                  style="width: auto;"
+                >
+                  Acessar LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Repositórios do Caderno do SENAI -->
+  <div id="senai-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="senai-modal-title" hidden>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="senai-modal-title" class="modal-title">Caderno do SENAI — Repositórios por Módulo</h3>
+          <p class="modal-subtitle">Todos os projetos públicos do curso técnico em Desenvolvimento de Sistemas</p>
+        </div>
+        <button type="button" id="close-senai-modal" class="modal-close" aria-label="Fechar janela">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-list">
+        <div class="modal-repo-item">
+          <div class="modal-repo-top">
+            <strong class="modal-repo-name">SENAI---PROJ.-COMA-BEM---MOD13</strong>
+            <div class="project-tags">
+              <span class="tag tag-highlight">Módulo 13</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">SQLite</span>
+            </div>
+          </div>
+          <p class="modal-repo-desc">Aplicativo mobile Coma Bem que conecta usuários a restaurantes locais, estruturado com SQLite normalizado (1FN–3FN), padrão DAO e Orientação a Objetos.</p>
+          <a href="https://github.com/SamuelppDes/SENAI---PROJ.-COMA-BEM---MOD13" target="_blank" rel="noopener noreferrer" class="modal-repo-link">Ver Repositório &rarr;</a>
+        </div>
+
+        <div class="modal-repo-item">
+          <div class="modal-repo-top">
+            <strong class="modal-repo-name">SENAI-BD_MOBILE-MOD12</strong>
+            <div class="project-tags">
+              <span class="tag tag-highlight">Módulo 12</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">C++</span>
+            </div>
+          </div>
+          <p class="modal-repo-desc">Módulo de Banco de Dados Mobile com modelagem e estruturação de persistência local aplicada ao projeto Coma Bem.</p>
+          <a href="https://github.com/SamuelppDes/SENAI-BD_MOBILE-MOD12" target="_blank" rel="noopener noreferrer" class="modal-repo-link">Ver Repositório &rarr;</a>
+        </div>
+
+        <div class="modal-repo-item">
+          <div class="modal-repo-top">
+            <strong class="modal-repo-name">SENAI-TESTE_BACKEND-MOD11</strong>
+            <div class="project-tags">
+              <span class="tag tag-highlight">Módulo 11</span>
+              <span class="tag">C#</span>
+              <span class="tag">Testes</span>
+            </div>
+          </div>
+          <p class="modal-repo-desc">Aplicação web em C# (Calculadora de IMC) voltada à execução de testes de back-end, diagnóstico de falhas e documentação de planos de teste.</p>
+          <a href="https://github.com/SamuelppDes/SENAI-TESTE_BACKEND-MOD11" target="_blank" rel="noopener noreferrer" class="modal-repo-link">Ver Repositório &rarr;</a>
+        </div>
+
+        <div class="modal-repo-item">
+          <div class="modal-repo-top">
+            <strong class="modal-repo-name">SENAI-API_DEV-MOD10</strong>
+            <div class="project-tags">
+              <span class="tag tag-highlight">Módulo 10</span>
+              <span class="tag">C#</span>
+              <span class="tag">ASP.NET Core</span>
+            </div>
+          </div>
+          <p class="modal-repo-desc">API REST em C# e ASP.NET Core (ExoApi) com controladores, contextos e repositórios para prática de diagnóstico e manutenção de sistemas.</p>
+          <a href="https://github.com/SamuelppDes/SENAI-API_DEV-MOD10" target="_blank" rel="noopener noreferrer" class="modal-repo-link">Ver Repositório &rarr;</a>
+        </div>
+
+        <div class="modal-repo-item">
+          <div class="modal-repo-top">
+            <strong class="modal-repo-name">SENAI-BANCO_DADOS-MOD9</strong>
+            <div class="project-tags">
+              <span class="tag tag-highlight">Módulo 9</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+          <p class="modal-repo-desc">Scripts SQL e atividades práticas de banco de dados relacional, tratamento de erros e boas práticas na documentação de projetos.</p>
+          <a href="https://github.com/SamuelppDes/SENAI-BANCO_DADOS-MOD9" target="_blank" rel="noopener noreferrer" class="modal-repo-link">Ver Repositório &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Samuel Pinheiro &mdash; Análise e Desenvolvimento de Sistemas</p>
+      <p>Hospedado no GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 1. GitHub Contribution Heatmap (dados públicos reais de SamuelppDes: 09/11/2025 a 14/11/2026)
+      const contributions = {
+        '2025-11-23': [1, 1],
+        '2025-12-03': [1, 1],
+        '2026-05-12': [3, 2],
+        '2026-05-13': [1, 1],
+        '2026-06-18': [1, 1],
+        '2026-06-22': [1, 1],
+        '2026-06-23': [2, 2],
+        '2026-08-12': [1, 1],
+        '2026-08-13': [2, 2],
+        '2026-09-08': [3, 2],
+        '2026-09-23': [6, 4],
+        '2026-11-11': [6, 4],
+        '2026-11-12': [1, 1],
+        '2026-11-14': [3, 2]
+      };
+
+      const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+      const monthsContainer = document.getElementById('contrib-months');
+      const gridContainer = document.getElementById('contrib-grid');
+      const statusEl = document.getElementById('contrib-status');
+
+      const start = new Date(Date.UTC(2025, 10, 9)); // 2025-11-09 (Domingo)
+      let lastMonth = -1;
+
+      for (let col = 0; col < 53; col++) {
+        const colStart = new Date(start);
+        colStart.setUTCDate(start.getUTCDate() + col * 7);
+        const m = colStart.getUTCMonth();
+
+        const monthLabel = document.createElement('span');
+        monthLabel.className = 'contrib-month-label';
+        if (m !== lastMonth) {
+          monthLabel.textContent = monthNames[m];
+          lastMonth = m;
+        }
+        monthsContainer.appendChild(monthLabel);
+
+        for (let row = 0; row < 7; row++) {
+          const day = new Date(colStart);
+          day.setUTCDate(colStart.getUTCDate() + row);
+          const iso = day.toISOString().slice(0, 10);
+          const entry = contributions[iso] || [0, 0];
+          const count = entry[0];
+          const level = entry[1];
+
+          const dd = String(day.getUTCDate()).padStart(2, '0');
+          const mm = String(day.getUTCMonth() + 1).padStart(2, '0');
+          const yyyy = day.getUTCFullYear();
+          const dateLabel = `${dd}/${mm}/${yyyy}`;
+          const text = count === 0
+            ? `Nenhuma contribuição em ${dateLabel}`
+            : `${count} ${count === 1 ? 'contribuição' : 'contribuições'} em ${dateLabel}`;
+
+          const cell = document.createElement('button');
+          cell.type = 'button';
+          cell.className = 'contrib-cell';
+          cell.dataset.level = String(level);
+          cell.title = text;
+          cell.setAttribute('aria-label', text);
+
+          const showStatus = () => { statusEl.textContent = text; };
+          cell.addEventListener('mouseenter', showStatus);
+          cell.addEventListener('focus', showStatus);
+
+          gridContainer.appendChild(cell);
+        }
+      }
+
+      // 2. Dynamic Projects Carousel
+      const track = document.getElementById('carousel-track');
+      const viewport = document.getElementById('carousel-viewport');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      const dotsContainer = document.getElementById('carousel-dots');
+      const counterEl = document.getElementById('carousel-counter');
+      const cards = Array.from(track.children);
+
+      let currentIndex = 0;
+
+      function getCardsPerView() {
+        const w = window.innerWidth;
+        if (w >= 920) return 3;
+        if (w >= 640) return 2;
+        return 1;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, cards.length - getCardsPerView());
+      }
+
+      function renderDots() {
+        const maxIdx = getMaxIndex();
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i <= maxIdx; i++) {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+          dot.setAttribute('aria-label', `Ir para posição ${i + 1}`);
+          dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateCarousel();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateCarousel() {
+        const perView = getCardsPerView();
+        const maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+        if (currentIndex < 0) currentIndex = 0;
+
+        const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0');
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+
+        const firstVisible = currentIndex + 1;
+        const lastVisible = Math.min(cards.length, currentIndex + perView);
+        counterEl.textContent = perView === 1
+          ? `${firstVisible} de ${cards.length}`
+          : `${firstVisible}–${lastVisible} de ${cards.length}`;
+
+        Array.from(dotsContainer.children).forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+      }
+
+      nextBtn.addEventListener('click', () => {
+        const maxIdx = getMaxIndex();
+        currentIndex = currentIndex >= maxIdx ? 0 : currentIndex + 1;
+        updateCarousel();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        const maxIdx = getMaxIndex();
+        currentIndex = currentIndex <= 0 ? maxIdx : currentIndex - 1;
+        updateCarousel();
+      });
+
+      viewport.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          nextBtn.click();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevBtn.click();
+        }
+      });
+
+      let touchStartX = 0;
+      viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0) nextBtn.click();
+          else prevBtn.click();
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        renderDots();
+        updateCarousel();
+      });
+
+      renderDots();
+      updateCarousel();
+
+      // 3. SENAI Modal
+      const senaiModal = document.getElementById('senai-modal');
+      const openSenaiBtn = document.getElementById('open-senai-modal');
+      const closeSenaiBtn = document.getElementById('close-senai-modal');
+
+      function openModal() {
+        senaiModal.hidden = false;
+        requestAnimationFrame(() => senaiModal.classList.add('is-open'));
+        document.body.style.overflow = 'hidden';
+        closeSenaiBtn.focus();
+      }
+
+      function closeModal() {
+        senaiModal.classList.remove('is-open');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          if (!senaiModal.classList.contains('is-open')) {
+            senaiModal.hidden = true;
+          }
+        }, 220);
+        openSenaiBtn.focus();
+      }
+
+      openSenaiBtn.addEventListener('click', openModal);
+      closeSenaiBtn.addEventListener('click', closeModal);
+      senaiModal.addEventListener('click', (e) => {
+        if (e.target === senaiModal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !senaiModal.hidden) closeModal();
+      });
+
+      // 4. Technologies Breakdown (dados reais da API de linguagens do GitHub @SamuelppDes)
+      const langColors = {
+        'Dart': '#00b4ab',
+        'JavaScript': '#f1e05a',
+        'C#': '#22c55e',
+        'C++': '#f34b7d',
+        'CMake': '#ef4444',
+        'HTML': '#e34c26',
+        'CSS': '#a855f7',
+        'Python': '#38bdf8',
+        'Swift': '#f97316',
+        'C': '#94a3b8',
+        'Java': '#fb923c',
+        'Kotlin': '#c084fc',
+        'Objective-C': '#60a5fa',
+        'Outras': '#64748b'
+      };
+
+      const techOverall = [
+        { name: 'Dart', bytes: 293181, pct: 41.43, repos: 'licithub, Coma Bem (Mod. 13), BD Mobile (Mod. 12)' },
+        { name: 'JavaScript', bytes: 258638, pct: 36.55, repos: 'Beex Contabilidade, Flappy-Original, Teste Back-end (Mod. 11)' },
+        { name: 'C#', bytes: 50350, pct: 7.12, repos: 'licithub, API Dev (Mod. 10), Teste Back-end (Mod. 11)' },
+        { name: 'C++', bytes: 45384, pct: 6.41, repos: 'Coma Bem (Mod. 13), BD Mobile (Mod. 12)' },
+        { name: 'CMake', bytes: 30471, pct: 4.31, repos: 'Coma Bem (Mod. 13), BD Mobile (Mod. 12)' },
+        { name: 'HTML', bytes: 11245, pct: 1.59, repos: 'Teste Back-end, licithub, Coma Bem, BD Mobile, Flappy, Beex' },
+        { name: 'CSS', bytes: 7094, pct: 1.00, repos: 'Teste Back-end (Mod. 11), Flappy-Original, Beex Contabilidade' },
+        { name: 'Python', bytes: 5866, pct: 0.83, repos: 'gdp-dashboard, Flappy-Original' },
+        { name: 'Outras', bytes: 5380, pct: 0.76, repos: 'Swift, C, Java, Kotlin, Objective-C (módulos nativos Flutter)' }
+      ];
+
+      const techByProject = [
+        {
+          id: 'Beex---Contabilidade-',
+          label: 'Beex Contabilidade',
+          totalBytes: 235235,
+          langs: [
+            { name: 'JavaScript', bytes: 233972, pct: 99.46 },
+            { name: 'CSS', bytes: 665, pct: 0.28 },
+            { name: 'HTML', bytes: 598, pct: 0.25 }
+          ]
+        },
+        {
+          id: 'licithub',
+          label: 'licithub (TCC)',
+          totalBytes: 253965,
+          langs: [
+            { name: 'Dart', bytes: 230261, pct: 90.67 },
+            { name: 'C#', bytes: 21772, pct: 8.57 },
+            { name: 'HTML', bytes: 1932, pct: 0.76 }
+          ]
+        },
+        {
+          id: 'SENAI---PROJ.-COMA-BEM---MOD13',
+          label: 'Coma Bem (SENAI Mod. 13)',
+          totalBytes: 108153,
+          langs: [
+            { name: 'Dart', bytes: 57075, pct: 52.77 },
+            { name: 'C++', bytes: 25764, pct: 23.82 },
+            { name: 'CMake', bytes: 19783, pct: 18.29 },
+            { name: 'Swift', bytes: 2362, pct: 2.18 },
+            { name: 'HTML', bytes: 1521, pct: 1.41 },
+            { name: 'C', bytes: 1488, pct: 1.38 },
+            { name: 'Kotlin', bytes: 122, pct: 0.11 },
+            { name: 'Objective-C', bytes: 38, pct: 0.04 }
+          ]
+        },
+        {
+          id: 'gdp-dashboard',
+          label: 'gdp-dashboard',
+          totalBytes: 3754,
+          langs: [
+            { name: 'Python', bytes: 3754, pct: 100.0 }
+          ]
+        },
+        {
+          id: 'Flappy-Original',
+          label: 'Flappy-Original',
+          totalBytes: 21070,
+          langs: [
+            { name: 'JavaScript', bytes: 14992, pct: 71.15 },
+            { name: 'CSS', bytes: 2794, pct: 13.26 },
+            { name: 'Python', bytes: 2112, pct: 10.02 },
+            { name: 'HTML', bytes: 1172, pct: 5.56 }
+          ]
+        },
+        {
+          id: 'SENAI-API_DEV-MOD10',
+          label: 'API Dev (SENAI Mod. 10)',
+          totalBytes: 15943,
+          langs: [
+            { name: 'C#', bytes: 15943, pct: 100.0 }
+          ]
+        },
+        {
+          id: 'SENAI-TESTE_BACKEND-MOD11',
+          label: 'Teste Back-end (SENAI Mod. 11)',
+          totalBytes: 30716,
+          langs: [
+            { name: 'C#', bytes: 12635, pct: 41.13 },
+            { name: 'JavaScript', bytes: 9674, pct: 31.49 },
+            { name: 'HTML', bytes: 4772, pct: 15.54 },
+            { name: 'CSS', bytes: 3635, pct: 11.83 }
+          ]
+        },
+        {
+          id: 'SENAI-BD_MOBILE-MOD12',
+          label: 'BD Mobile (SENAI Mod. 12)',
+          totalBytes: 37775,
+          langs: [
+            { name: 'C++', bytes: 19620, pct: 51.94 },
+            { name: 'CMake', bytes: 10688, pct: 28.29 },
+            { name: 'Dart', bytes: 5845, pct: 15.47 },
+            { name: 'HTML', bytes: 1250, pct: 3.31 },
+            { name: 'C', bytes: 750, pct: 1.99 },
+            { name: 'Java', bytes: 516, pct: 1.37 },
+            { name: 'Kotlin', bytes: 126, pct: 0.33 }
+          ]
+        }
+      ];
+
+      const tabGeralBtn = document.getElementById('tab-tech-geral');
+      const tabProjetoBtn = document.getElementById('tab-tech-projeto');
+      const projectPillsWrap = document.getElementById('tech-project-pills');
+      const stackedBar = document.getElementById('tech-stacked-bar');
+      const techList = document.getElementById('tech-list');
+      const techScopeLabel = document.getElementById('tech-scope-label');
+
+      let selectedProjectId = techByProject[0].id;
+
+      function formatKb(bytes) {
+        return (bytes / 1024).toFixed(1).replace('.', ',') + ' KB';
+      }
+
+      function renderTechItems(items, scopeText) {
+        techScopeLabel.textContent = scopeText;
+        stackedBar.innerHTML = '';
+        techList.innerHTML = '';
+
+        items.forEach((item) => {
+          const color = langColors[item.name] || '#64748b';
+          const pctText = item.pct.toFixed(1).replace('.', ',') + '%';
+
+          const seg = document.createElement('div');
+          seg.className = 'tech-segment';
+          seg.style.width = `${Math.max(item.pct, 0.6)}%`;
+          seg.style.backgroundColor = color;
+          seg.title = `${item.name}: ${pctText} (${formatKb(item.bytes)})`;
+          stackedBar.appendChild(seg);
+
+          const row = document.createElement('div');
+          row.className = 'tech-row';
+
+          const top = document.createElement('div');
+          top.className = 'tech-row-top';
+
+          const nameWrap = document.createElement('span');
+          nameWrap.className = 'tech-name-wrap';
+
+          const dot = document.createElement('span');
+          dot.className = 'tech-dot';
+          dot.style.backgroundColor = color;
+
+          const nameEl = document.createElement('span');
+          nameEl.className = 'tech-name';
+          nameEl.textContent = item.name;
+
+          nameWrap.appendChild(dot);
+          nameWrap.appendChild(nameEl);
+
+          const meta = document.createElement('span');
+          meta.className = 'tech-meta';
+          meta.innerHTML = `<strong>${pctText}</strong> &middot; ${formatKb(item.bytes)}`;
+
+          top.appendChild(nameWrap);
+          top.appendChild(meta);
+
+          const trackEl = document.createElement('div');
+          trackEl.className = 'tech-bar-track';
+
+          const fill = document.createElement('div');
+          fill.className = 'tech-bar-fill';
+          fill.style.width = `${Math.max(item.pct, 1.2)}%`;
+          fill.style.backgroundColor = color;
+          trackEl.appendChild(fill);
+
+          row.appendChild(top);
+          row.appendChild(trackEl);
+
+          if (item.repos) {
+            const reposEl = document.createElement('p');
+            reposEl.className = 'tech-repos-used';
+            reposEl.textContent = `Usado em: ${item.repos}`;
+            row.appendChild(reposEl);
+          }
+
+          techList.appendChild(row);
+        });
+      }
+
+      function renderProjectPills() {
+        projectPillsWrap.innerHTML = '';
+        techByProject.forEach((proj) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'tech-pill' + (proj.id === selectedProjectId ? ' active' : '');
+          btn.textContent = proj.label;
+          btn.addEventListener('click', () => {
+            selectedProjectId = proj.id;
+            renderProjectPills();
+            renderTechItems(proj.langs, `Repositório: ${proj.id} (${formatKb(proj.totalBytes)})`);
+          });
+          projectPillsWrap.appendChild(btn);
+        });
+      }
+
+      tabGeralBtn.addEventListener('click', () => {
+        tabGeralBtn.classList.add('active');
+        tabGeralBtn.setAttribute('aria-selected', 'true');
+        tabProjetoBtn.classList.remove('active');
+        tabProjetoBtn.setAttribute('aria-selected', 'false');
+        projectPillsWrap.hidden = true;
+        renderTechItems(techOverall, 'Todos os repositórios públicos (691,0 KB de código)');
+      });
+
+      tabProjetoBtn.addEventListener('click', () => {
+        tabProjetoBtn.classList.add('active');
+        tabProjetoBtn.setAttribute('aria-selected', 'true');
+        tabGeralBtn.classList.remove('active');
+        tabGeralBtn.setAttribute('aria-selected', 'false');
+        projectPillsWrap.hidden = false;
+        renderProjectPills();
+        const proj = techByProject.find((p) => p.id === selectedProjectId) || techByProject[0];
+        renderTechItems(proj.langs, `Repositório: ${proj.id} (${formatKb(proj.totalBytes)})`);
+      });
+
+      renderTechItems(techOverall, 'Todos os repositórios públicos (691,0 KB de código)');
+
+      // 5. Copy email button
+      const copyEmailBtn = document.getElementById('copy-email-btn');
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText('sppdes@gmail.com');
+            copyEmailBtn.textContent = 'E-mail copiado!';
+            setTimeout(() => {
+              copyEmailBtn.textContent = 'Copiar e-mail';
+            }, 2200);
+          } catch (_) {
+            window.location.href = 'mailto:sppdes@gmail.com';
+          }
+        });
+      }
+
+      // 6. Random flying hand-drawn rocket across the background map
+      const rocketEl = document.getElementById('sketch-rocket');
+      const trailLayer = document.getElementById('rocket-trail-layer');
+      if (rocketEl) {
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let vw = window.innerWidth || 1280;
+        let vh = window.innerHeight || 720;
+
+        window.addEventListener('resize', () => {
+          vw = window.innerWidth || 1280;
+          vh = window.innerHeight || 720;
+        });
+
+        const randRange = (min, max) => min + Math.random() * (max - min);
+        let rx = randRange(vw * 0.12, vw * 0.88);
+        let ry = randRange(vh * 0.14, vh * 0.84);
+        let tx = randRange(70, Math.max(140, vw - 70));
+        let ty = randRange(90, Math.max(160, vh - 90));
+        let heading = randRange(0, Math.PI * 2);
+        let turnBias = randRange(-0.015, 0.015);
+        let nextWanderAt = 0;
+
+        if (prefersReducedMotion) {
+          rocketEl.style.transform = `translate3d(${Math.round(vw * 0.86)}px, ${Math.round(vh * 0.24)}px, 0) rotate(32deg)`;
+        } else {
+          // Pool of small dashed smoke puffs for the rocket trail
+          const puffs = [];
+          const puffCount = 16;
+          if (trailLayer) {
+            for (let i = 0; i < puffCount; i++) {
+              const dot = document.createElement('span');
+              dot.className = 'rocket-puff';
+              trailLayer.appendChild(dot);
+              puffs.push(dot);
+            }
+          }
+          let puffIdx = 0;
+          let lastPuffTime = 0;
+          let lastFrame = performance.now();
+
+          const pickNewTarget = () => {
+            tx = randRange(60, Math.max(140, vw - 60));
+            ty = randRange(80, Math.max(160, vh - 80));
+            turnBias = randRange(-0.032, 0.032);
+          };
+
+          const flyStep = (now) => {
+            const dt = Math.min(0.05, Math.max(0.008, (now - lastFrame) / 1000));
+            lastFrame = now;
+
+            const dx = tx - rx;
+            const dy = ty - ry;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist < 64 || now > nextWanderAt) {
+              pickNewTarget();
+              nextWanderAt = now + randRange(2400, 5200);
+            }
+
+            // Smooth angular steering + random organic wobble
+            const desiredAngle = Math.atan2(ty - ry, tx - rx);
+            let angleDiff = desiredAngle - heading;
+            while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
+            while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
+
+            heading += angleDiff * Math.min(1, dt * 2.4) + turnBias + Math.sin(now * 0.004) * 0.014;
+
+            const speed = 135; // px/sec
+            rx += Math.cos(heading) * speed * dt;
+            ry += Math.sin(heading) * speed * dt;
+
+            // Keep safely inside viewport bounds with soft bounce
+            if (rx < 36) { rx = 36; heading = randRange(-0.8, 0.8); pickNewTarget(); }
+            if (rx > vw - 36) { rx = vw - 36; heading = Math.PI + randRange(-0.8, 0.8); pickNewTarget(); }
+            if (ry < 48) { ry = 48; heading = Math.PI * 0.5 + randRange(-0.8, 0.8); pickNewTarget(); }
+            if (ry > vh - 48) { ry = vh - 48; heading = -Math.PI * 0.5 + randRange(-0.8, 0.8); pickNewTarget(); }
+
+            const deg = (heading * 180) / Math.PI + 90;
+            rocketEl.style.transform = `translate3d(${rx.toFixed(1)}px, ${ry.toFixed(1)}px, 0) rotate(${deg.toFixed(1)}deg)`;
+
+            // Spawn fading dashed smoke puff behind tail
+            if (puffs.length && now - lastPuffTime > 95) {
+              lastPuffTime = now;
+              const puff = puffs[puffIdx];
+              puffIdx = (puffIdx + 1) % puffs.length;
+              const tailX = rx - Math.cos(heading) * 34;
+              const tailY = ry - Math.sin(heading) * 34;
+              puff.style.transition = 'none';
+              puff.style.transform = `translate3d(${tailX.toFixed(1)}px, ${tailY.toFixed(1)}px, 0) scale(0.75)`;
+              puff.style.opacity = '0.72';
+              void puff.offsetWidth;
+              puff.style.transition = 'opacity 1.15s ease-out, transform 1.15s ease-out';
+              puff.style.transform = `translate3d(${(tailX + randRange(-10, 10)).toFixed(1)}px, ${(tailY + randRange(-10, 10)).toFixed(1)}px, 0) scale(1.9)`;
+              puff.style.opacity = '0';
+            }
+
+            requestAnimationFrame(flyStep);
+          };
+
+          requestAnimationFrame(flyStep);
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
